@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FC, useState} from 'react';
 
 export interface Props {
     name: string;
@@ -6,12 +6,16 @@ export interface Props {
     email: string;
 }
 
-export const Person  = (props: Props) => {
+export const Person: FC<Props>  = ({name, email, age}) => {
+    const [country, setCountry ] = useState<string | null >('')
   return (
     <div>
-        <h1>{props.name}</h1>
-        <h1>{props.age}</h1>
-        <h1>{props.email}</h1>
+        <h1>{name}</h1>
+        <h1>{age}</h1>
+        <h1>{email}</h1>
+        <input placeholder='Write down your country...' onChange={(e) => 
+        setCountry(e.target.value)}/>
+        {country}
       
     </div>
   );
